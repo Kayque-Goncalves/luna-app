@@ -10,9 +10,11 @@ import '../styles/auth.scss'
 export function Home(): JSX.Element {
   const history = useHistory()
 
-  function navigateToNewRoom() {
+  function handleCreateRoom() {
     history.push('/rooms/new')
   }
+
+
 
   return (
     <div id="page-auth">
@@ -24,7 +26,7 @@ export function Home(): JSX.Element {
       <main>
         <div className="main-content">
           <h1> Luna App </h1>
-          <button className="create-room" onClick={navigateToNewRoom}>
+          <button className="create-room" onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="Google logo" />
             Create your room with Google
           </button>
