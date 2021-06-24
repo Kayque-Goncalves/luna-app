@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router'
+
 import illustrationImg from '../assets/images/illustration.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
 
@@ -6,6 +8,12 @@ import { Button } from '../components/Button'
 import '../styles/auth.scss'
 
 export function Home(): JSX.Element {
+  const history = useHistory()
+
+  function navigateToNewRoom() {
+    history.push('/rooms/new')
+  }
+
   return (
     <div id="page-auth">
       <aside>
@@ -16,7 +24,7 @@ export function Home(): JSX.Element {
       <main>
         <div className="main-content">
           <h1> Luna App </h1>
-          <button className="create-room">
+          <button className="create-room" onClick={navigateToNewRoom}>
             <img src={googleIconImg} alt="Google logo" />
             Create your room with Google
           </button>
