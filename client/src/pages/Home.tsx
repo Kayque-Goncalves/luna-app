@@ -1,4 +1,4 @@
-import { useHistory } from 'react-router'
+import { useAuthContext } from '../contexts/AuthContext'
 
 import illustrationImg from '../assets/images/illustration.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
@@ -6,15 +6,17 @@ import googleIconImg from '../assets/images/google-icon.svg'
 import { Button } from '../components/Button'
 
 import '../styles/auth.scss'
+import { useHistory } from 'react-router-dom'
 
 export function Home(): JSX.Element {
   const history = useHistory()
+  const { signInWithGoogle, user } = useAuthContext()
 
-  function handleCreateRoom() {
+  async function handleCreateRoom() {
+    if (!user) await signInWithGoogle()
+
     history.push('/rooms/new')
   }
-
-
 
   return (
     <div id="page-auth">
